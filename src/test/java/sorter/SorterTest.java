@@ -139,7 +139,7 @@ public class SorterTest {
         String[] expected = {"123 main", "123 qweq", "456 new", "123 zxc", "123 main"};
 
         for (int i = 0; i < test.length; i++)
-            Assertions.assertEquals(expected[i], sorter.removeExclusionsAndExtension(test[i]));
+            Assertions.assertEquals(expected[i], sorter.getFolderName(test[i]));
 
     }
 

@@ -129,15 +129,15 @@ public class Sorter {
 
     private void mapIndexesOfOriginalFilesToShortenedName(String[] files, HashMap<String, String> map) {
         for (int i = 0; i < files.length; i++) {
-            String cleaned = removeExclusionsAndExtension(files[i].toLowerCase());
-            String indexes = map.get(cleaned);
-            map.put(cleaned, indexes == null ?
+            String address = getFolderName(files[i].toLowerCase());
+            String indexes = map.get(address);
+            map.put(address, indexes == null ?
                     String.valueOf(i).concat(Constant.DELIM) : indexes.concat(String.valueOf(i).concat(Constant.DELIM)));
         }
     }
 
 
-    public String removeExclusionsAndExtension(String name) {
+    public String getFolderName(String name) {
 
         //remove file extention
         int index = name.indexOf(".");
