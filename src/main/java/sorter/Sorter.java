@@ -70,8 +70,10 @@ public class Sorter {
 
         HashMap<String, String> map = new HashMap<>();
 
+        //helper method - fills in the map for future use
         mapIndexesOfOriginalFileToShortenedName(files, map);
 
+        //names are keys from the map
         createFoldersByName(map, newRoot);
 
         moveExistingFilesToNewFolders(files, map, root, newRoot);
