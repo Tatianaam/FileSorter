@@ -147,7 +147,7 @@ public class Sorter {
                         .trim();
 
         //get first 8 letters - street number & beginning of name - enough for address id
-        return name.substring(0, name.length() < 8 ? name.length() : 8).trim();
+        return name.substring(0, name.length() < Constant.NAME_LENGTH ? name.length() : Constant.NAME_LENGTH).trim();
 
     }
 
