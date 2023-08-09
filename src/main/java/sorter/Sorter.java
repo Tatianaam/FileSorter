@@ -70,13 +70,15 @@ public class Sorter {
 
         HashMap<String, String> map = new HashMap<>();
 
-        //helper method - fills in the map for future use
-        mapIndexesOfOriginalFileToShortenedName(files, map);
+        // helper method - fills in the map for future use
+        // keys - addresses
+        // values - indexes of this address related documents from original array
+        mapIndexesOfOriginalFilesToShortenedName(files, map);
 
         //names are keys from the map
         createFoldersByName(map, newRoot);
 
-        moveExistingFilesToNewFolders(files, map, root, newRoot);
+        copyExistingFilesToNewFolders(files, map, root, newRoot);
     }
 
 
@@ -91,7 +93,7 @@ public class Sorter {
         return sortedFolder;
     }
 
-    private void moveExistingFilesToNewFolders(String[] files, HashMap<String, String> map, String root, String newRoot) {
+    private void copyExistingFilesToNewFolders(String[] files, HashMap<String, String> map, String root, String newRoot) {
 
         for (Map.Entry<String, String> entry : map.entrySet()) {
             String[] indexes = entry.getValue().split(Constant.DELIM);
@@ -125,7 +127,7 @@ public class Sorter {
     }
 
 
-    private void mapIndexesOfOriginalFileToShortenedName(String[] files, HashMap<String, String> map) {
+    private void mapIndexesOfOriginalFilesToShortenedName(String[] files, HashMap<String, String> map) {
         for (int i = 0; i < files.length; i++) {
             String cleaned = removeExclusionsAndExtension(files[i].toLowerCase());
             String indexes = map.get(cleaned);
